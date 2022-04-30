@@ -1,0 +1,42 @@
+### react ###
+.DS_*
+*.log
+logs
+**/*.backup.*
+**/*.back.*
+
+frontend-larareact/node_modules
+frontend-larareact/bower_components
+
+*.sublime*
+
+psd
+thumb
+sketch
+
+### Laravel ###
+
+### Laravel ###
+/vendor/
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Laravel 4 specific
+bootstrap/compiled.php
+app/storage/
+
+# Laravel 5 & Lumen specific
+public/storage
+public/hot
+
+# Laravel 5 & Lumen specific with changed public path
+backend-larareact/public_html/storage
+backend-larareact/public_html/hot
+
+backend-larareact/storage/*.key
+#backend-larareact/.env
+backend-larareact/Homestead.yaml
+backend-larareact/Homestead.json
+/.vagrant
+.phpunit.result.cache

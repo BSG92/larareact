@@ -1,0 +1,14 @@
+div > h3 {
+    text-align: center;
+}
+.form-elements > input {
+    margin-bottom: 2rem;
+}
+
+#error {
+    color: var(--dark-red);
+    background-color: var(--red);
+    text-align: center;
+    font-size: larger;
+    font-weight: bolder;
+}

@@ -1,0 +1,9 @@
+@import url('../../App.css');
+
+#header__login {
+    color: var(--primary);
+}
+
+#header__login:hover {
+    color: white;
+}
