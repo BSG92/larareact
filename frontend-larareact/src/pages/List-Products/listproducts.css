@@ -1,0 +1,20 @@
+tbody > tr {
+    /* height: 10rem; */
+}
+tbody > tr > td:nth-child(4){
+    width: 30%;
+}
+
+tbody > tr > td > img {
+    display: block;
+    max-width: 10rem;
+    max-height: 10rem;
+    width: auto;
+    height: auto;
+    /* object-fit: cover; */
+}
+/* tbody > tr > td > img {
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+} */

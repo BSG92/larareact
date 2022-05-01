@@ -31,6 +31,7 @@ const Header = () => {
                 <Nav.Link href='/add-product'>Add Product</Nav.Link>
                 <Nav.Link href='/update-product'>Edit Product</Nav.Link>
                 <Nav.Link href='/delete-product'>Delete Product</Nav.Link>
+                <Nav.Link href='/'>View Products</Nav.Link>
               </>
               :
               <>

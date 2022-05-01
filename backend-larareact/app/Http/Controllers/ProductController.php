@@ -24,4 +24,8 @@ class ProductController extends Controller
         // store the uploaded file in the "products" directory
         // return $request->file('file_name')->store('products');
     }
+
+    function list(){
+        return Product::all();
+    }
 }
