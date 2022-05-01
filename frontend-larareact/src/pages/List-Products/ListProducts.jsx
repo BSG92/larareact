@@ -7,19 +7,38 @@ import axios from 'axios'
 const ListProducts = () => {
 
     const  [data, setData] = useState([]);
+    const [user, setUser] = useState();
+
+    function isUserLoggedIn(){
+        let user = null;
+        try {
+            user = JSON.parse(localStorage.getItem('user-info'));
+        }catch(e){
+            console.error(e);
+        }
+
+        if (user) {
+            setUser(1);
+        }else{
+            setUser(0);
+        }
+    }
 
     useEffect(() => {
+        isUserLoggedIn();
+        getData();
+
         // let result = await fetch('http://localhost:8000/api/list_product');
         // result = await result.json();
         // console.log(resultJSON);
 
-        axios.get("http://localhost:8000/api/list_product")
-            .then(res => {
-                setData(res.data)
-            })
-            .catch(err => {
-                console.log(err)
-            })
+    //    axios.get("http://localhost:8000/api/list_product")
+    //         .then(res => {
+    //             setData(res.data)
+    //         })
+    //         .catch(err => {
+    //             console.log(err)
+    //         })
 
         // async function fetchData(){
         //     let result = await fetch("http://localhost:8000/api/list_product");
@@ -33,6 +52,26 @@ const ListProducts = () => {
         // So the data array might be empty during the console.log
         // console.log("The Data array" , data);
     }, []); // <--- this empty [] will stop fatching data continuously (without it an infinite loop of data fetching will happen)
+
+    async function getData(){
+        await axios.get("http://localhost:8000/api/list_product")
+            .then(res => {
+                setData(res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+    
+    function deleteProduct(id) {
+       axios.delete("http://localhost:8000/api/delete_product/"+id)
+            .then(res => {
+                getData();
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
   return (
     <div>
@@ -50,6 +89,7 @@ const ListProducts = () => {
                         <td>Price</td>
                         <td>Image</td>
                         <td>Description</td>
+                        <td></td>
                     </tr>
                 </thead>
 
@@ -84,6 +124,14 @@ const ListProducts = () => {
                                  <td>{product.price}</td>
                                  <td><img src={"http://localhost:8000/"+product.file_path} alt="loading error"/></td>
                                  <td>{product.description}</td>
+                                 {user ?
+                                    <td><span type='button' className='btn btn-danger btn-sm'
+                                    onClick={() => deleteProduct(product.id)}>Delete</span></td>
+                                    :
+                                    <td></td>
+                                 }
+                                    {/* <span type='button' className='btn btn-danger btn-sm'
+                                    onClick={() => deleteProduct(product.id)}>Delete</span></td> */}
                              </tr>
                             )
                     }

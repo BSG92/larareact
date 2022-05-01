@@ -18,3 +18,7 @@ tbody > tr > td > img {
     height: 10rem;
     object-fit: cover;
 } */
+
+tbody span {
+    cursor: none;
+}
